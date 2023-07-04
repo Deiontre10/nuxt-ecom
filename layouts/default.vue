@@ -7,19 +7,20 @@
           class="font-bold text-2xl text-purple-700 rounded-sm mx-auto"
           >Nuxt Ecom</NuxtLink
         >
-        <ul class="flex gap-4 text-purple-700">
+        <ul class="flex gap-4">
           <li>
-            <NuxtLink to="/">Home</NuxtLink>
+            <NuxtLink to="/" class="btn">Home</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/about">About</NuxtLink>
+            <NuxtLink to="/about" class="btn">About</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/products">Products</NuxtLink>
+            <NuxtLink to="/products" class="btn">Products</NuxtLink>
           </li>
         </ul>
       </nav>
     </header>
+
     <div class="conatiner mx-auto p-4">
       <slot />
     </div>
