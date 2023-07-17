@@ -6,7 +6,10 @@
       ad et blanditiis voluptatum adipisci hic, est molestias eius molestiae
       debitis consequatur quia at labore accusamus, ut harum ratione esse!
     </p>
+    <div>{{ data }}</div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+  const { data } = await useFetch("/api/ninja");
+</script>

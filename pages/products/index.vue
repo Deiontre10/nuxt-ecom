@@ -1,9 +1,25 @@
 <template>
-  <div><h1>Products</h1></div>
+  <div>
+    <div class="grid grid-cols-4 gap-5">
+      <div v-for="p in products">
+        <ProductCard :product="p" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
-definePageMeta({ layout: "products" });
+  definePageMeta({ layout: "products" });
+
+  // fetch the products from the API
+  const { data: products } = await useFetch(
+    "https://fakestoreapi.com/products"
+  );
+
+  useHead({
+    title: "Nuxt Ecom | Stuff",
+    meta: [{ name: "description", content: "This is a fake store" }],
+  });
 </script>
 
 <style lang="scss" scoped></style>

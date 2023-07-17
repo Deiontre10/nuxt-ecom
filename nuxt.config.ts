@@ -8,4 +8,16 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  app: {
+    head: {
+      title: "Nuxt Ecom",
+      meta: [{ name: "description", content: "Nuxt 3 Baby" }],
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+        },
+      ],
+    },
+  },
 });

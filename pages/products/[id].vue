@@ -1,18 +1,30 @@
 <template>
+  <Head>
+    <Title>Nuxt Ecom | {{ product.title }}</Title>
+    <Meta name="description" :content="product.description" />
+  </Head>
+
   <div>
-    <p>Product details for {{ id }}</p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique placeat
-      corporis veniam, odit dicta maxime totam praesentium esse possimus minima
-      sequi consequuntur asperiores, ea facilis harum quis neque at eaque!
-    </p>
+    <ProductDetails :product="product" />
   </div>
 </template>
 
 <script setup>
-const { id } = useRoute().params;
+  const { id } = useRoute().params;
+  const uri = "https://fakestoreapi.com/products/" + id;
 
-definePageMeta({ layout: "products" });
+  // fetch the product from the API
+  const { data: product } = await useFetch(uri, { key: id });
+
+  if (!product.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Product not found",
+      fatal: true,
+    });
+  }
+
+  definePageMeta({ layout: "products" });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
